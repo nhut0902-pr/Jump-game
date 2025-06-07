@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Runner: The Adventure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Container chính -->
+    <div id="game-wrapper">
+        <!-- Màn hình game -->
+        <div id="game-container" class="screen">
+            <div id="road-stripes"></div>
+            <div id="player"></div>
+            <div id="ui-container">
+                <div>Vàng: <span id="gold-display">0</span></div>
+                <div>Điểm: <span id="score-display">0</span></div>
+            </div>
+        </div>
+
+        <!-- Màn hình chính (Menu) -->
+        <div id="home-screen" class="screen active">
+            <h1>Ninja Runner</h1>
+            <div class="player-stats">
+                Vàng: <span id="home-gold">0</span> | Cấp Nhà: <span id="home-house-level">1</span>
+            </div>
+            <button id="play-button">CHẠY!</button>
+            <button id="shop-button">Cửa Hàng</button>
+            <button id="house-button">Nhà Của Tôi</button>
+        </div>
+
+        <!-- Màn hình cửa hàng -->
+        <div id="shop-screen" class="screen">
+            <h2>Cửa Hàng</h2>
+            <div class="item">
+                <h3>Khiên Bảo Vệ</h3>
+                <p>Kéo dài thời gian hiệu lực của Khiên.</p>
+                <button class="buy-button" data-item="shield">Nâng cấp (Cấp <span id="shield-level">1</span>) - <span id="shield-cost">100</span> Vàng</button>
+            </div>
+            <div class="item">
+                <h3>Nam Châm Vàng</h3>
+                <p>Kéo dài thời gian hút Vàng của Nam châm.</p>
+                <button class="buy-button" data-item="magnet">Nâng cấp (Cấp <span id="magnet-level">1</span>) - <span id="magnet-cost">100</span> Vàng</button>
+            </div>
+            <button class="back-button" data-target="home-screen">Quay về</button>
+        </div>
+
+        <!-- Màn hình nhà -->
+        <div id="house-screen" class="screen">
+            <h2>Nhà Của Tôi</h2>
+            <div id="house-visual" class="level-1">
+                <p>Cấp <span id="house-level-display">1</span></p>
+            </div>
+            <p>Nâng cấp nhà để nhận điểm thưởng và mở khóa map mới!</p>
+            <p>Thưởng điểm: +<span id="house-bonus">0</span>%</p>
+            <button id="upgrade-house-button">Nâng cấp - <span id="house-cost">200</span> Vàng</button>
+            <button class="back-button" data-target="home-screen">Quay về</button>
+        </div>
+
+        <!-- Màn hình Game Over -->
+        <div id="game-over-screen" class="screen">
+            <h1>Game Over</h1>
+            <p>Điểm cuối: <span id="final-score">0</span></p>
+            <p>Vàng kiếm được: <span id="gold-earned">0</span></p>
+            <button id="restart-button">Chơi Lại</button>
+            <button class="back-button" data-target="home-screen">Về Menu</button>
+        </div>
+    </div>
+
+    <!-- Âm thanh -->
+    <audio id="music" src="music.mp3" loop></audio>
+    <audio id="coin-sound" src="coin.wav"></audio>
+    <audio id="jump-sound" src="jump.wav"></audio>
+    <audio id="crash-sound" src="crash.wav"></audio>
+    <audio id="upgrade-sound" src="upgrade.wav"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+/* --- CƠ BẢN --- */
+body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #333; font-family: Arial, sans-serif; }
+#game-wrapper { width: 400px; height: 600px; position: relative; border: 5px solid #000; }
+
+/* --- QUẢN LÝ MÀN HÌNH --- */
+.screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #3498db; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 20px; box-sizing: border-box; }
+.screen.active { display: flex; }
+
+/* --- THAY ĐỔI 1: BỎ HIỆU ỨNG 3D CỦA CONTAINER --- */
+#game-container { 
+    padding: 0; 
+    justify-content: initial; 
+    background-color: #777; 
+    /* perspective: 500px;  XÓA HOẶC BÌNH LUẬN DÒNG NÀY ĐỂ LÀM PHẲNG GAME */
+    overflow: hidden; 
+}
+
+/* --- GAMEPLAY & MAP --- */
+#road-stripes { position: absolute; width: 100%; height: 100%; background-image: linear-gradient(white 50%, transparent 50%); background-size: 20px 80px; animation: move-stripes 0.5s linear infinite; }
+@keyframes move-stripes { from { background-position-y: 0px; } to { background-position-y: 80px; } }
+#game-container.map-city .obstacle { background-color: #e74c3c; border: 3px solid #c0392b; }
+#game-container.map-forest { background-color: #27ae60; }
+#game-container.map-forest #road-stripes { background-image: linear-gradient(#6e4c2b 50%, transparent 50%); }
+#game-container.map-forest .obstacle { background-color: #8d6e63; border: 3px solid #5d4037; }
+
+#player { width: 50px; height: 70px; background-color: #2c3e50; border-top-left-radius: 25px; border-top-right-radius: 25px; position: absolute; bottom: 20px; left: 175px; z-index: 10; transform-origin: bottom; transition: left 0.2s, transform 0.3s; }
+#player.jump { transform: translateY(-150px); } /* Bỏ scale khi nhảy để nhất quán */
+
+/* --- THAY ĐỔI 2: ĐỊNH NGHĨA HOẠT ẢNH DI CHUYỂN TỪ TRÊN XUỐNG --- */
+@keyframes move-down {
+    from {
+        top: -80px; /* Bắt đầu từ phía trên màn hình */
+    }
+    to {
+        top: 600px; /* Di chuyển xuống hết màn hình mà không thay đổi kích thước */
+    }
+}
+
+/* --- THAY ĐỔI 3: ÁP DỤNG HOẠT ẢNH MỚI --- */
+.obstacle, .coin { 
+    position: absolute; 
+    animation-name: move-down; /* Sử dụng hoạt ảnh mới 'move-down' */
+    animation-timing-function: linear; 
+}
+
+.game-paused .obstacle, .game-paused .coin, .game-paused #road-stripes { animation-play-state: paused; }
+.obstacle { width: 80px; height: 80px; z-index: 9; }
+.coin { width: 30px; height: 30px; background-color: #f1c40f; border-radius: 50%; border: 2px solid #e67e22; z-index: 8; }
+
+/* --- GIAO DIỆN UI (Không thay đổi) --- */
+#ui-container { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 10px; color: white; text-shadow: 2px 2px #000; z-index: 20; }
+button { padding: 10px 20px; font-size: 18px; background-color: #2ecc71; border: none; color: white; cursor: pointer; border-radius: 10px; margin-top: 15px; border-bottom: 4px solid #27ae60; }
+button:hover { background-color: #34d97b; }
+button:active { transform: translateY(2px); border-bottom-width: 2px; }
+#shop-screen, #house-screen { background-color: #2980b9; }
+.item, #house-visual { background-color: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin-bottom: 15px; width: 80%; }
+#house-visual { height: 150px; transition: background-color 0.5s; display: flex; justify-content: center; align-items: center; font-size: 2em; }
+#house-visual.level-1 { background-color: #95a5a6; }
+#house-visual.level-2 { background-color: #bdc3c7; }
+#house-visual.level-3 { background-color: #e67e22; }
+#house-visual.level-4 { background-color: #f1c40f; }
+.back-button { background-color: #e74c3c; border-bottom-color: #c0392b; }
+.back-button:hover { background-color: #ff6b5a; }
