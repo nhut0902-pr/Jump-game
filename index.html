@@ -2,12 +2,11 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Ninja Runner: The Adventure</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Container chính -->
     <div id="game-wrapper">
         <!-- Màn hình game -->
         <div id="game-container" class="screen">
@@ -23,29 +22,39 @@
         <div id="home-screen" class="screen active">
             <h1>Ninja Runner</h1>
             <div class="player-stats">
-                Vàng: <span id="home-gold">0</span> | Cấp Nhà: <span id="home-house-level">1</span>
+                <p>Vàng: <span id="home-gold">0</span> | Cấp Nhà: <span id="home-house-level">1</span></p>
+                <p>Nhân vật: <span id="home-char-name">Ninja</span></p>
             </div>
             <button id="play-button">CHẠY!</button>
             <button id="shop-button">Cửa Hàng</button>
             <button id="house-button">Nhà Của Tôi</button>
         </div>
 
-        <!-- Màn hình cửa hàng -->
+        <!-- Màn hình cửa hàng với các Tab -->
         <div id="shop-screen" class="screen">
             <h2>Cửa Hàng</h2>
-            <div class="item">
-                <h3>Khiên Bảo Vệ</h3>
-                <p>Kéo dài thời gian hiệu lực của Khiên.</p>
-                <button class="buy-button" data-item="shield">Nâng cấp (Cấp <span id="shield-level">1</span>) - <span id="shield-cost">100</span> Vàng</button>
+            <div id="shop-tabs">
+                <button class="tab-button active" data-tab="shop-items-tab">Vật Phẩm</button>
+                <button class="tab-button" data-tab="character-shop-tab">Nhân Vật</button>
             </div>
-            <div class="item">
-                <h3>Nam Châm Vàng</h3>
-                <p>Kéo dài thời gian hút Vàng của Nam châm.</p>
-                <button class="buy-button" data-item="magnet">Nâng cấp (Cấp <span id="magnet-level">1</span>) - <span id="magnet-cost">100</span> Vàng</button>
+            
+            <div id="shop-container">
+                <!-- Tab Vật phẩm -->
+                <div id="shop-items-tab" class="tab-content active">
+                    <div id="shop-items" class="scrollable-container">
+                        <!-- JS sẽ tự động điền vật phẩm vào đây -->
+                    </div>
+                </div>
+                <!-- Tab Nhân vật -->
+                <div id="character-shop-tab" class="tab-content">
+                    <div id="character-shop-items" class="scrollable-container">
+                        <!-- JS sẽ tự động điền nhân vật vào đây -->
+                    </div>
+                </div>
             </div>
             <button class="back-button" data-target="home-screen">Quay về</button>
         </div>
-
+        
         <!-- Màn hình nhà -->
         <div id="house-screen" class="screen">
             <h2>Nhà Của Tôi</h2>
