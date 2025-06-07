@@ -39,17 +39,11 @@
             </div>
             
             <div id="shop-container">
-                <!-- Tab Vật phẩm -->
                 <div id="shop-items-tab" class="tab-content active">
-                    <div id="shop-items" class="scrollable-container">
-                        <!-- JS sẽ tự động điền vật phẩm vào đây -->
-                    </div>
+                    <div id="shop-items" class="scrollable-container"></div>
                 </div>
-                <!-- Tab Nhân vật -->
                 <div id="character-shop-tab" class="tab-content">
-                    <div id="character-shop-items" class="scrollable-container">
-                        <!-- JS sẽ tự động điền nhân vật vào đây -->
-                    </div>
+                    <div id="character-shop-items" class="scrollable-container"></div>
                 </div>
             </div>
             <button class="back-button" data-target="home-screen">Quay về</button>
@@ -72,6 +66,7 @@
             <h1>Game Over</h1>
             <p>Điểm cuối: <span id="final-score">0</span></p>
             <p>Vàng kiếm được: <span id="gold-earned">0</span></p>
+            <button id="revive-button" class="revive-button">Dùng Hồi Sinh (Còn: <span id="revive-count">0</span>)</button>
             <button id="restart-button">Chơi Lại</button>
             <button class="back-button" data-target="home-screen">Về Menu</button>
         </div>
@@ -83,6 +78,7 @@
     <audio id="jump-sound" src="jump.wav"></audio>
     <audio id="crash-sound" src="crash.wav"></audio>
     <audio id="upgrade-sound" src="upgrade.wav"></audio>
+    <audio id="shield-break-sound" src="shield_break.wav"></audio> <!-- Thêm âm thanh vỡ khiên -->
 
     <script src="script.js"></script>
 </body>
